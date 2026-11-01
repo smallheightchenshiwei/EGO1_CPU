@@ -14,3 +14,13 @@ vivado/**/.Xil/
 # Simulation temporary files
 *.wdb
 *.vcd
+# Vivado simulation generated files
+vivado/**/*.sim/
+vivado/**/*.gen/
+vivado/**/*.runs/
+vivado/**/*.cache/
+
+# Vivado generated reports
+vivado/**/*.hw/
+vivado/**/*.ip_user_files/
+vivado/**/.Xil/
