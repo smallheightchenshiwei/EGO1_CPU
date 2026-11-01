@@ -1,0 +1,16 @@
+
+# Vivado generated files
+vivado/**/*.cache/
+vivado/**/*.runs/
+vivado/**/*.hw/
+vivado/**/*.ip_user_files/
+vivado/**/.Xil/
+
+# Vivado logs and journals
+*.jou
+*.log
+*.str
+
+# Simulation temporary files
+*.wdb
+*.vcd
