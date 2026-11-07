@@ -6,13 +6,13 @@ module single_cycle_cpu (
     output [31:0] debug_inst
 );
 
-    // 当前PC地址
+    // 褰撳墠PC鍦板潃
     wire [31:0] current_pc;
 
-    // 当前指令
+    // 褰撳墠鎸囦护
     wire [31:0] current_inst;
 
-    // PC模块
+    // PC妯″潡
     pc u_pc (
         .clk(clk),
         .reset(reset),
@@ -22,13 +22,13 @@ module single_cycle_cpu (
         .pc(current_pc)
     );
 
-    // 指令ROM模块
+    // 鎸囦护ROM妯″潡
     inst_rom u_inst_rom (
         .addr(current_pc),
         .inst(current_inst)
     );
 
-    // 调试输出
+    // 璋冭瘯杈撳嚭
     assign debug_pc = current_pc;
     assign debug_inst = current_inst;
 

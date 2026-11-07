@@ -8,7 +8,7 @@ module tb_single_cycle_cpu;
     wire [31:0] debug_pc;
     wire [31:0] debug_inst;
 
-    // ÊµÀı»¯µ¥ÖÜÆÚCPU
+    // å®ä¾‹åŒ–å•å‘¨æœŸCPU
     single_cycle_cpu uut (
         .clk(clk),
         .reset(reset),
@@ -16,13 +16,13 @@ module tb_single_cycle_cpu;
         .debug_inst(debug_inst)
     );
 
-    // Ê±ÖÓ²úÉú
+    // æ—¶é’Ÿäº§ç”Ÿ
     initial begin
         clk = 1'b0;
         forever #5 clk = ~clk;
     end
 
-    // ¸´Î»¼°·ÂÕæ¿ØÖÆ
+    // å¤ä½åŠä»¿çœŸæ§åˆ¶
     initial begin
         reset = 1'b1;
         #20;
@@ -32,7 +32,7 @@ module tb_single_cycle_cpu;
         $finish;
     end
 
-    // ¹Û²ìPCºÍÖ¸Áî
+    // è§‚å¯ŸPCå’ŒæŒ‡ä»¤
     initial begin
         $monitor("time=%0t reset=%b PC=%h INST=%h",
                  $time, reset, debug_pc, debug_inst);

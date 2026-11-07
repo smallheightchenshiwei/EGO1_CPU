@@ -2,46 +2,46 @@
 module decoder (
     input  [31:0] inst,
 
-    // Ô­Ê¼Ö¸Áî×Ö¶Î
+    // åŸå§‹æŒ‡ä»¤å­—æ®µ
     output [4:0] rd,
     output [4:0] rj,
     output [4:0] rk,
 
-    // ¼Ä´æÆ÷¶Ñ¶ÁĞ´µØÖ·
+    // å¯„å­˜å™¨å †è¯»å†™åœ°å€
     output reg [4:0] raddr1,
     output reg [4:0] raddr2,
     output reg [4:0] waddr,
 
-    // Á¢¼´Êı
+    // ç«‹å³æ•°
     output reg [31:0] imm,
 
-    // ALU¿ØÖÆ
+    // ALUæ§åˆ¶
     output reg [3:0] alu_ctrl,
     output reg       alu_src_imm,
 
-    // Ğ´»Ø¿ØÖÆ
+    // å†™å›æ§åˆ¶
     output reg [1:0] wb_sel,
     output reg       reg_we,
 
-    // ´æ´¢Æ÷¿ØÖÆ
+    // å­˜å‚¨å™¨æ§åˆ¶
     output reg       mem_we,
     output reg       mem_re,
 
-    // ·ÖÖ§¿ØÖÆ
+    // åˆ†æ”¯æ§åˆ¶
     output reg [2:0] branch_type,
 
-    // Ö¸ÁîÓĞĞ§±êÖ¾
+    // æŒ‡ä»¤æœ‰æ•ˆæ ‡å¿—
     output reg       valid
 );
 
-// 1. Ö¸Áî×Ö¶ÎÌáÈ¡
+// 1. æŒ‡ä»¤å­—æ®µæå–
 
 assign rd = inst[4:0];
 assign rj = inst[9:5];
 assign rk = inst[14:10];
 
 
-// 2. ALU¿ØÖÆ±àÂë
+// 2. ALUæ§åˆ¶ç¼–ç 
 
 
 localparam ALU_ADD = 4'd0;
@@ -57,7 +57,7 @@ localparam ALU_MUL = 4'd9;
 localparam ALU_DIV = 4'd10;
 localparam ALU_MOD = 4'd11;
 
-// 3. ·ÖÖ§¿ØÖÆ±àÂë
+// 3. åˆ†æ”¯æ§åˆ¶ç¼–ç 
 
 localparam BR_NONE = 3'd0;
 localparam BR_BEQ  = 3'd1;
@@ -66,17 +66,17 @@ localparam BR_BLT  = 3'd3;
 localparam BR_B    = 3'd4;
 localparam BR_BL   = 3'd5;
 
-// 4. Ğ´»ØÊı¾İÑ¡Ôñ±àÂë
+// 4. å†™å›æ•°æ®é€‰æ‹©ç¼–ç 
 
 localparam WB_ALU = 2'd0;
 localparam WB_MEM = 2'd1;
 localparam WB_PC4 = 2'd2;
 
-// 5. Ö¸ÁîÒëÂë
+// 5. æŒ‡ä»¤è¯‘ç 
 
 always @(*) begin
 
-    // Ä¬ÈÏÖµ
+    // é»˜è®¤å€¼
     raddr1     = 5'd0;
     raddr2     = 5'd0;
     waddr      = 5'd0;
@@ -345,7 +345,7 @@ always @(*) begin
         end
 
         default: begin
-            // ±£³ÖÄ¬ÈÏÖµ£¬·Ç·¨Ö¸Áî²»²úÉúĞ´²Ù×÷
+            // ä¿æŒé»˜è®¤å€¼ï¼Œéæ³•æŒ‡ä»¤ä¸äº§ç”Ÿå†™æ“ä½œ
         end
 
     endcase

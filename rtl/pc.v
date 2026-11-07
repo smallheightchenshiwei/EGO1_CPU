@@ -1,24 +1,24 @@
 
 module pc (
-    input         clk,           //Ê±ÖÓ
-    input         reset,         // Í¬²½¸ßµçÆ½¸´Î»
-    input         stall,         // Á÷Ë®ÏßÔİÍ£
-    input         redirect_en,   // ·ÖÖ§»òÌø×ªÊ¹ÄÜ
-    input  [31:0] redirect_addr,// ·ÖÖ§»òÌø×ªÄ¿±êµØÖ·
-    output reg [31:0] pc         // µ±Ç°Ö¸ÁîµØÖ·
+    input         clk,           //æ—¶é’Ÿ
+    input         reset,         // åŒæ­¥é«˜ç”µå¹³å¤ä½
+    input         stall,         // æµæ°´çº¿æš‚åœ
+    input         redirect_en,   // åˆ†æ”¯æˆ–è·³è½¬ä½¿èƒ½
+    input  [31:0] redirect_addr,// åˆ†æ”¯æˆ–è·³è½¬ç›®æ ‡åœ°å€
+    output reg [31:0] pc         // å½“å‰æŒ‡ä»¤åœ°å€
 );
 
     always @(posedge clk) begin
-        if (reset) begin//reset=1Ê±pc=0
+        if (reset) begin//reset=1æ—¶pc=0
             pc <= 32'h00000000;
         end
-        else if (stall) begin//stall=1pc²»±ä
+        else if (stall) begin//stall=1pcä¸å˜
             pc <= pc;
         end
-        else if (redirect_en) begin//redirect_en=1µÄÊ±ºò£¬pc=redirect_addr
+        else if (redirect_en) begin//redirect_en=1çš„æ—¶å€™ï¼Œpc=redirect_addr
             pc <= redirect_addr;
         end
-        else begin//Õı³£ÔËĞĞ£¬pc=pc+4
+        else begin//æ­£å¸¸è¿è¡Œï¼Œpc=pc+4
             pc <= pc + 32'd4;
         end
     end

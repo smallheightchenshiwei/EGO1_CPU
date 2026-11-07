@@ -12,7 +12,7 @@ module tb_data_ram;
     integer pass_count;
     integer fail_count;
 
-    // ÊµÀı»¯Êı¾İ´æ´¢Æ÷
+    // å®ä¾‹åŒ–æ•°æ®å­˜å‚¨å™¨
     data_ram uut (
         .clk(clk),
         .we(we),
@@ -21,13 +21,13 @@ module tb_data_ram;
         .rdata(rdata)
     );
 
-    // ²úÉúÊ±ÖÓĞÅºÅ£¬ÖÜÆÚÎª10ns
+    // äº§ç”Ÿæ—¶é’Ÿä¿¡å·ï¼Œå‘¨æœŸä¸º10ns
     initial begin
         clk = 0;
         forever #5 clk = ~clk;
     end
 
-    // ¼ì²é¶ÁÈ¡½á¹û
+    // æ£€æŸ¥è¯»å–ç»“æœ
     task check_result;
         input [31:0] expected;
         begin
@@ -52,7 +52,7 @@ module tb_data_ram;
         addr = 0;
         wdata = 0;
 
-        // ²âÊÔ1£ºÏòµØÖ·0Ğ´ÈëÊı¾İ
+        // æµ‹è¯•1ï¼šå‘åœ°å€0å†™å…¥æ•°æ®
         @(negedge clk);
         addr = 32'h00000000;
         wdata = 32'h12345678;
@@ -62,7 +62,7 @@ module tb_data_ram;
         we = 0;
         check_result(32'h12345678);
 
-        // ²âÊÔ2£ºÏòµØÖ·4Ğ´ÈëÊı¾İ
+        // æµ‹è¯•2ï¼šå‘åœ°å€4å†™å…¥æ•°æ®
         @(negedge clk);
         addr = 32'h00000004;
         wdata = 32'hABCDEF01;
@@ -72,7 +72,7 @@ module tb_data_ram;
         we = 0;
         check_result(32'hABCDEF01);
 
-        // ²âÊÔ3£ºÏòµØÖ·8Ğ´ÈëÊı¾İ
+        // æµ‹è¯•3ï¼šå‘åœ°å€8å†™å…¥æ•°æ®
         @(negedge clk);
         addr = 32'h00000008;
         wdata = 32'h87654321;
@@ -82,22 +82,22 @@ module tb_data_ram;
         we = 0;
         check_result(32'h87654321);
 
-        // ²âÊÔ4£ºÖØĞÂ¶ÁÈ¡µØÖ·0
+        // æµ‹è¯•4ï¼šé‡æ–°è¯»å–åœ°å€0
         @(negedge clk);
         addr = 32'h00000000;
         check_result(32'h12345678);
 
-        // ²âÊÔ5£ºÖØĞÂ¶ÁÈ¡µØÖ·4
+        // æµ‹è¯•5ï¼šé‡æ–°è¯»å–åœ°å€4
         @(negedge clk);
         addr = 32'h00000004;
         check_result(32'hABCDEF01);
 
-        // ²âÊÔ6£ºÖØĞÂ¶ÁÈ¡µØÖ·8
+        // æµ‹è¯•6ï¼šé‡æ–°è¯»å–åœ°å€8
         @(negedge clk);
         addr = 32'h00000008;
         check_result(32'h87654321);
 
-        // ²âÊÔ7£º¹Ø±ÕĞ´Ê¹ÄÜ£¬È·ÈÏÔ­Êı¾İ²»±ä
+        // æµ‹è¯•7ï¼šå…³é—­å†™ä½¿èƒ½ï¼Œç¡®è®¤åŸæ•°æ®ä¸å˜
         @(negedge clk);
         addr = 32'h00000000;
         wdata = 32'hFFFFFFFF;
@@ -105,7 +105,7 @@ module tb_data_ram;
         @(posedge clk);
         check_result(32'h12345678);
 
-        // Êä³ö²âÊÔÍ³¼Æ
+        // è¾“å‡ºæµ‹è¯•ç»Ÿè®¡
         #10;
         $display("--------------------------------");
         $display("DATA RAM TEST FINISHED");
